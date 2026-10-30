@@ -1,6 +1,6 @@
-# Repassa Motos Elétricas
+# Milwatz · Motos Elétricas
 
-Vitrine mobile do estoque de motos elétricas da Repassa Brasil (Catálogo de Atacado 2026).
+Vitrine mobile do catálogo de motos elétricas da Milwatz (Global Mobility Hub) (Catálogo de Atacado 2026).
 
 - `index.html` — app
 - `data.js` — estoque (preços, specs, fotos)

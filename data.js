@@ -1,5 +1,62 @@
-/* Gerado do Catálogo de Atacado 2026. Edite aqui: preços, varejo, destaques. */
+/* Catálogo Milwatz 2026 (gerado do Catálogo de Atacado). Edite aqui: preços, varejo, destaques. */
 const MOTOS = [
+ {
+  "id": "x13",
+  "codigo": "X13",
+  "categoria": "Scooter",
+  "lancamento": true,
+  "atacado": 5497.0,
+  "varejo": 8497.0,
+  "fotos": [
+   "img/x13-cinza-0.jpg"
+  ],
+  "cores": [
+   {
+    "nome": "Cinza",
+    "hex": "#8A8F94",
+    "fotos": [
+     "img/x13-cinza-0.jpg"
+    ]
+   },
+   {
+    "nome": "Vermelho",
+    "hex": "#C8252B",
+    "fotos": [
+     "img/x13-vermelho-0.jpg"
+    ]
+   },
+   {
+    "nome": "Azul",
+    "hex": "#1F5FD6",
+    "fotos": [
+     "img/x13-azul-0.jpg"
+    ]
+   }
+  ],
+  "specs": [
+   [
+    "Potência",
+    "1000W"
+   ],
+   [
+    "Autonomia",
+    "60 km"
+   ],
+   [
+    "Velocidade",
+    "32km/h (bloqueada)"
+   ],
+   [
+    "Documentação",
+    "Sem CNH e sem placa"
+   ]
+  ],
+  "destaques": [
+   "Lançamento Milwatz",
+   "Não precisa de CNH nem emplacamento",
+   "Margem de R$ 3.000 por unidade para o lojista"
+  ]
+ },
  {
   "id": "hl-02",
   "codigo": "HL-02",
