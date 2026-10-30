@@ -3,29 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0A0A0B">
+<meta name="theme-color" content="#05070A">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="icon" href="img/mark.jpg">
-<link rel="apple-touch-icon" href="img/mark.jpg">
-<title>Repassa Motos Elétricas</title>
+<link rel="icon" href="img/milwatz-mark.png">
+<link rel="apple-touch-icon" href="img/milwatz-mark.png">
+<title>Milwatz · Motos Elétricas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap">
 <style>
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-/* Layout: app shell escuro — header fixo com toggle Atacado/Varejo, vitrine em grade, ficha da moto em tela cheia com visualizador 360° e CTA do WhatsApp preso ao rodapé. */
+/* Layout: app shell Milwatz (preto, prata, ciano) — header fixo com toggle Atacado/Varejo, vitrine em grade, ficha da moto em tela cheia com visualizador 360° e CTA do WhatsApp preso ao rodapé. */
 :root{
-  --bg:#0A0A0B;
-  --surface:#141416;
-  --surface-2:#1C1C1F;
-  --line:#26262B;
-  --fg:#F4F1EA;
-  --muted:#9C9890;
-  --gold:#F2A61A;
-  --gold-2:#FFC652;
+  --bg:#05070A;
+  --surface:#0E141A;
+  --surface-2:#141C24;
+  --line:#1F2A33;
+  --fg:#EEF2F4;
+  --muted:#9AA7B0;
+  --silver:#C9D1D6;
+  --gold:#00E5FF;
+  --gold-2:#5CF0FF;
+  --ink:#04161A;
   --wa:#25D366;
   --wa-ink:#06301A;
-  --display:'Unbounded',system-ui,sans-serif;
+  --display:'Montserrat',system-ui,sans-serif;
   --body:'Manrope',system-ui,-apple-system,sans-serif;
   color-scheme:dark;
 }
@@ -33,31 +35,31 @@
 [hidden]{display:none!important}
 html,body{height:100%}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;overscroll-behavior-y:none}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:rgba(10,10,11,.92)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:rgba(5,7,10,.92)}
 img{max-width:100%;display:block}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
 button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .gutter{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 
 /* Header */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(10,10,11,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(5,7,10,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .top-in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px;max-width:980px;margin:0 auto}
 .brand{display:flex;align-items:center;gap:10px;min-width:0}
-.brand img{width:40px;height:33px;object-fit:cover;border-radius:4px}
-.brand b{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.04em;text-transform:uppercase;line-height:1.1}
+.brand img{width:40px;height:40px;object-fit:cover;border-radius:10px}
+.brand b{font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase;line-height:1.1;color:var(--silver)}
 .brand b span{color:var(--gold)}
-.brand small{display:block;font-family:var(--body);font-weight:500;font-size:11px;color:var(--muted);letter-spacing:.02em;text-transform:none}
+.brand small{display:block;font-family:var(--body);font-weight:600;font-size:9px;color:var(--muted);letter-spacing:.22em;text-transform:uppercase;margin-top:2px}
 
 /* Toggle Atacado / Varejo */
 .seg{position:relative;display:grid;grid-template-columns:1fr 1fr;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:3px;flex:0 0 auto;width:172px}
 .seg::before{content:"";position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:999px;background:linear-gradient(135deg,var(--gold),var(--gold-2));transition:transform .25s cubic-bezier(.2,.8,.2,1)}
 .seg[data-mode="varejo"]::before{transform:translateX(100%)}
 .seg button{position:relative;z-index:1;padding:7px 0;border-radius:999px;font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);transition:color .2s}
-.seg[data-mode="atacado"] .b-atacado,.seg[data-mode="varejo"] .b-varejo{color:#1A1200}
+.seg[data-mode="atacado"] .b-atacado,.seg[data-mode="varejo"] .b-varejo{color:var(--ink)}
 
 /* Hero line */
 .hero{max-width:980px;margin:0 auto;padding-block:22px 8px}
-.hero h1{font-family:var(--display);font-weight:600;font-size:clamp(22px,6vw,34px);line-height:1.1;margin:0 0 6px;text-wrap:balance;letter-spacing:-.01em}
+.hero h1{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(22px,6vw,34px);line-height:1.1;margin:0 0 6px;text-wrap:balance;letter-spacing:-.01em}
 .hero p{margin:0;color:var(--muted);font-size:14px;max-width:46ch}
 .hero .mode-note{margin-top:10px;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:.03em;text-transform:uppercase}
 .hero .mode-note i{width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block}
@@ -68,10 +70,10 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 .card:active{transform:scale(.985)}
 .card .ph{position:relative;aspect-ratio:4/5;max-width:100%;background:#0F0F11;overflow:hidden}
 .card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.card .ph .chip{position:absolute;left:10px;top:10px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(10,10,11,.72);backdrop-filter:blur(6px);color:var(--fg);padding:5px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.08)}
-.card .ph .r360{position:absolute;right:10px;bottom:10px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(10,10,11,.72);border:1px solid rgba(255,255,255,.1);font-family:var(--display);font-size:9px;font-weight:700;color:var(--gold)}
+.card .ph .chip{position:absolute;left:10px;top:10px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(5,7,10,.72);backdrop-filter:blur(6px);color:var(--fg);padding:5px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.08)}
+.card .ph .r360{position:absolute;right:10px;bottom:10px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(5,7,10,.72);border:1px solid rgba(255,255,255,.1);font-family:var(--display);font-size:9px;font-weight:700;color:var(--gold)}
 .card .info{padding:12px 12px 14px;display:flex;flex-direction:column;gap:8px}
-.card .name{font-family:var(--display);font-weight:600;font-size:13px;line-height:1.25;letter-spacing:-.005em}
+.card .name{font-family:var(--display);font-weight:700;font-size:13px;line-height:1.25;letter-spacing:-.005em}
 .card .name small{display:block;font-family:var(--body);font-weight:600;font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
 .swatches{display:flex;gap:6px}
 .swatches i{width:14px;height:14px;border-radius:50%;border:1px solid rgba(255,255,255,.18);display:inline-block}
@@ -82,7 +84,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 .price .sub{font-size:11px;color:var(--muted);font-weight:500}
 
 /* Rodapé flutuante */
-.fab{position:fixed;left:0;right:0;bottom:0;z-index:35;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-bottom:calc(14px + env(safe-area-inset-bottom,0px));padding-top:14px;background:linear-gradient(to top,rgba(10,10,11,.96) 55%,rgba(10,10,11,0));pointer-events:none}
+.fab{position:fixed;left:0;right:0;bottom:0;z-index:35;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-bottom:calc(14px + env(safe-area-inset-bottom,0px));padding-top:14px;background:linear-gradient(to top,rgba(5,7,10,.96) 55%,rgba(5,7,10,0));pointer-events:none}
 .fab-in{max-width:980px;margin:0 auto;display:flex;justify-content:flex-end}
 .btn-wa{pointer-events:auto;display:inline-flex;align-items:center;gap:10px;background:var(--wa);color:var(--wa-ink);font-weight:800;font-size:14px;padding:13px 18px 13px 14px;border-radius:999px;box-shadow:0 10px 30px rgba(37,211,102,.28);text-decoration:none;transition:transform .15s}
 .btn-wa:active{transform:scale(.97)}
@@ -91,7 +93,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 
 /* Ficha da moto (tela cheia) */
 .sheet{position:fixed;inset:0;z-index:50;background:var(--bg);overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding-top:env(safe-area-inset-top,0px)}
-.sheet-top{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-block:10px;background:rgba(10,10,11,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.sheet-top{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-block:10px;background:rgba(5,7,10,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .icon-btn{width:40px;height:40px;border-radius:50%;background:var(--surface-2);border:1px solid var(--line);display:grid;place-items:center}
 .icon-btn svg{width:18px;height:18px}
 .sheet-top .ttl{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;text-align:center;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -104,14 +106,14 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 .viewer img.on{opacity:1}
 .viewer.spin{cursor:grab;touch-action:none}
 .viewer.spin:active{cursor:grabbing}
-.viewer .hint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(10,10,11,.72);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.1);padding:8px 12px;border-radius:999px;white-space:nowrap;pointer-events:none;transition:opacity .3s}
+.viewer .hint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(5,7,10,.72);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.1);padding:8px 12px;border-radius:999px;white-space:nowrap;pointer-events:none;transition:opacity .3s}
 .viewer .hint.off{opacity:0}
 .viewer .hint svg{width:16px;height:16px}
-.viewer .frame-n{position:absolute;left:12px;top:12px;font-family:var(--display);font-size:10px;font-weight:600;color:var(--gold);background:rgba(10,10,11,.72);border:1px solid rgba(255,255,255,.1);padding:6px 9px;border-radius:999px;font-variant-numeric:tabular-nums}
+.viewer .frame-n{position:absolute;left:12px;top:12px;font-family:var(--display);font-size:10px;font-weight:600;color:var(--gold);background:rgba(5,7,10,.72);border:1px solid rgba(255,255,255,.1);padding:6px 9px;border-radius:999px;font-variant-numeric:tabular-nums}
 .viewer .zoom-btn{position:absolute;right:12px;top:12px}
 .mode-tabs{display:flex;gap:8px;margin-top:12px}
 .mode-tabs button{flex:1;padding:11px 10px;border-radius:12px;background:var(--surface);border:1px solid var(--line);font-weight:700;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:8px}
-.mode-tabs button[aria-selected="true"]{color:var(--fg);border-color:var(--gold);background:linear-gradient(180deg,rgba(242,166,26,.12),rgba(242,166,26,.04))}
+.mode-tabs button[aria-selected="true"]{color:var(--fg);border-color:var(--gold);background:linear-gradient(180deg,rgba(0,229,255,.12),rgba(0,229,255,.04))}
 .mode-tabs svg{width:16px;height:16px}
 .thumbs{display:flex;gap:8px;margin-top:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
 .thumbs::-webkit-scrollbar{display:none}
@@ -121,7 +123,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 
 /* Dados */
 .detail{display:flex;flex-direction:column;gap:18px;padding-top:18px}
-.detail h2{font-family:var(--display);font-weight:600;font-size:clamp(22px,6vw,30px);line-height:1.1;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.detail h2{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(22px,6vw,30px);line-height:1.1;margin:0;letter-spacing:-.01em;text-wrap:balance}
 .detail h2 small{display:block;font-family:var(--body);font-weight:600;font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
 .colors{display:flex;gap:8px;flex-wrap:wrap}
 .colors button{display:inline-flex;align-items:center;gap:8px;padding:8px 12px 8px 8px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-weight:600;font-size:13px}
@@ -129,7 +131,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 .colors i{width:16px;height:16px;border-radius:50%;border:1px solid rgba(255,255,255,.18);display:inline-block}
 .prices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .pbox{padding:14px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
-.pbox.on{border-color:var(--gold);background:linear-gradient(180deg,rgba(242,166,26,.12),rgba(242,166,26,.03))}
+.pbox.on{border-color:var(--gold);background:linear-gradient(180deg,rgba(0,229,255,.12),rgba(0,229,255,.03))}
 .pbox .lbl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
 .pbox .lbl em{font-style:normal;color:var(--gold);font-size:9px}
 .pbox .val{font-family:var(--display);font-weight:600;font-size:clamp(17px,4.6vw,22px);color:var(--fg);margin-top:4px;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
@@ -159,9 +161,9 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 .cats{max-width:980px;margin:0 auto;display:flex;gap:8px;overflow-x:auto;padding-block:10px 2px;scrollbar-width:none}
 .cats::-webkit-scrollbar{display:none}
 .cats button{flex:0 0 auto;padding:9px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
-.cats button[aria-selected="true"]{color:#1A1200;background:linear-gradient(135deg,var(--gold),var(--gold-2));border-color:transparent}
+.cats button[aria-selected="true"]{color:var(--ink);background:linear-gradient(135deg,var(--gold),var(--gold-2));border-color:transparent}
 .cats button span{opacity:.7;font-weight:600;margin-left:4px}
-.card .ph .chip.new{background:var(--gold);color:#1A1200;border-color:transparent}
+.card .ph .chip.new{background:var(--gold);color:var(--ink);border-color:transparent}
 .foot{max-width:980px;margin:0 auto;padding-block:8px 0;color:var(--muted);font-size:11px}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -171,8 +173,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 <header class="top gutter">
   <div class="top-in">
     <div class="brand">
-      <img src="img/mark.jpg" alt="">
-      <b>Repassa <span>Brasil</span><small>Motos elétricas · atacado</small></b>
+      <img src="img/milwatz-mark.png" alt="Milwatz">
+      <b>Milwat<span>z</span><small>Global Mobility Hub</small></b>
     </div>
     <div class="seg" id="seg" data-mode="atacado" role="tablist" aria-label="Tabela de preço">
       <button class="b-atacado" role="tab" data-mode="atacado">Atacado</button>
@@ -182,14 +184,14 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 </header>
 
 <section class="hero gutter">
-  <h1>Estoque de motos elétricas</h1>
-  <p>Catálogo de Atacado 2026. Toque no modelo para ver detalhes, fotos e pedir cotação.</p>
+  <h1>Motos elétricas<br>Milwatz</h1>
+  <p>A energia que move o mundo. Catálogo 2026 para atacado e varejo: toque no modelo para ver fotos, ficha técnica e pedir cotação.</p>
   <div class="mode-note"><i></i><span id="modeNote">Tabela atacado · preço por unidade</span></div>
 </section>
 <nav class="cats gutter" id="cats" aria-label="Categorias"></nav>
 
 <main class="grid gutter" id="grid"></main>
-<p class="foot gutter" id="foot">Preços de atacado conforme Catálogo 2026. Valores sujeitos a alteração sem aviso.</p>
+<p class="foot gutter" id="foot">Milwatz · Global Mobility Hub · Av. Major Pinheiro Froes, 2131 · Suzano/SP. Preços conforme Catálogo 2026, sujeitos a alteração sem aviso.</p>
 
 <div class="fab" id="fabHome">
   <div class="fab-in">
@@ -271,14 +273,14 @@ const brl = n => n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFr
 const CATS = ['Scooter', 'Triciclo', 'Bicicleta', 'Patinete'];
 let cat = 'Todos';
 let mode = 'atacado';
-try { mode = localStorage.getItem('rb-mode') || 'atacado'; } catch (e) {}
+try { mode = localStorage.getItem('mw-mode') || 'atacado'; } catch (e) {}
 let cur = null, corIdx = 0, view = 'fotos', fotoIdx = 0, frame = 0;
 
 function waLink(txt) { return 'https://wa.me/' + WA_NUMERO + '?text=' + encodeURIComponent(txt); }
 
 function setMode(m) {
   mode = m;
-  try { localStorage.setItem('rb-mode', m); } catch (e) {}
+  try { localStorage.setItem('mw-mode', m); } catch (e) {}
   $('#seg').dataset.mode = m;
   $('#seg').querySelectorAll('button').forEach(b => b.setAttribute('aria-selected', b.dataset.mode === m));
   $('#modeNote').textContent = m === 'atacado' ? 'Tabela atacado · preço por unidade' : 'Tabela varejo · preço ao consumidor';
@@ -316,7 +318,7 @@ function renderGrid() {
     b.addEventListener('click', () => openSheet(m));
     g.appendChild(b);
   });
-  $('#waHome').href = waLink('Olá Zanquetta! Vi o estoque de motos elétricas da Repassa e quero uma cotação (' + mode + ').');
+  $('#waHome').href = waLink('Olá Zanquetta! Vi o catálogo de motos elétricas da Milwatz e quero uma cotação (' + mode + ').');
 }
 
 /* ---- Ficha ---- */
